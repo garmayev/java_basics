@@ -11,7 +11,7 @@ public class Cat
     private static int count;
 
     private double eat;
-
+    private String name;
     private Color color;
 
     public Cat()
@@ -20,6 +20,28 @@ public class Cat
         originWeight = weight;
 
         count++;
+    }
+
+    public Cat(double weight)
+    {
+        this.weight = originWeight = weight;
+        count++;
+    }
+
+    public Cat(String name) {
+        this();
+        this.name = name;
+    }
+
+    public Cat(String name, double weight)
+    {
+        this.name = name;
+        this.weight = originWeight = weight;
+        count++;
+    }
+
+    public static Cat getKitten() {
+        return new Cat(1100);
     }
 
     public void setColor( Color color )

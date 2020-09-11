@@ -3,12 +3,12 @@ public class Loader
 {
     public static void main(String[] args)
     {
-        Cat catVasya = new Cat();
-        catVasya.setColor(Color.WHITE);
-        Cat catAlisa = new Cat();
-        catAlisa.setColor(Color.BLACK);
-        Cat catAlex = new Cat();
-        catAlex.setColor(Color.GRAY);
+        Cat catVasya = Cat.getKitten();
+        System.out.println(catVasya.getWeight());
+        Cat catAlisa = Cat.getKitten();
+        System.out.println(catAlisa.getWeight());
+        Cat catAlex = Cat.getKitten();
+        System.out.println(catAlex.getWeight());
         System.out.println(Cat.getCount());
     }
 }
