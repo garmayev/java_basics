@@ -7,6 +7,8 @@ public class Cat
     private double minWeight;
     private double maxWeight;
 
+    private static int count;
+
     private double eat;
 
     public Cat()
@@ -16,6 +18,7 @@ public class Cat
         minWeight = 1000.0;
         maxWeight = 9000.0;
 
+        count++;
     }
 
     public void meow()
@@ -28,6 +31,11 @@ public class Cat
     {
         weight = weight + amount;
         eat += amount;
+    }
+
+    public static int getCount()
+    {
+        return count;
     }
 
     public void drink(Double amount)
