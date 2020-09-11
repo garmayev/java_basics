@@ -3,11 +3,13 @@ public class Loader
 {
     public static void main(String[] args)
     {
-        Cat catVasya = Cat.getKitten();
-        System.out.println(catVasya.getWeight());
-        Cat catAlisa = Cat.getKitten();
-        System.out.println(catAlisa.getWeight());
-        Cat catAlex = Cat.getKitten();
+        Cat catVasya = new Cat("Васька");
+        System.out.println(catVasya);
+        Cat catAlisa = Cat.deepClone(catVasya);
+        catAlisa.setWeight(3200);
+        catAlisa.setName("Алиса");
+        System.out.println(catAlisa);
+        Cat catAlex = new Cat();
         System.out.println(catAlex.getWeight());
         System.out.println(Cat.getCount());
     }

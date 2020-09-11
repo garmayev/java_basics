@@ -40,6 +40,14 @@ public class Cat
         count++;
     }
 
+    public static Cat deepClone(Cat original) {
+        Cat first = new Cat();
+        first.setName( original.getName() );
+        first.setColor( original.getColor() );
+        first.setWeight( original.getWeight() );
+        return first;
+    }
+
     public static Cat getKitten() {
         return new Cat(1100);
     }
@@ -49,6 +57,12 @@ public class Cat
         this.color = color;
     }
     public Color getColor() { return this.color; }
+
+    public void setName(String name) { this.name = name; }
+    public String getName() { return name; }
+
+    public void setWeight(double weight) { this.weight = weight; }
+    public double getWeight() { return weight; }
 
     public void meow()
     {
@@ -70,11 +84,6 @@ public class Cat
     public void drink(Double amount)
     {
         weight = weight + amount;
-    }
-
-    public Double getWeight()
-    {
-        return weight;
     }
 
     public String getStatus()
@@ -102,5 +111,9 @@ public class Cat
     {
         weight -= weight / 200;
         System.out.println("Pee");
+    }
+
+    public String toString() {
+        return "Cat name is " + this.getName() + " and her weight is " + this.getWeight();
     }
 }
