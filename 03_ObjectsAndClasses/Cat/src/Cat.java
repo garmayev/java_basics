@@ -48,6 +48,7 @@ public class Cat
     {
         this.color = color;
     }
+    public Color getColor() { return this.color; }
 
     public void meow()
     {
