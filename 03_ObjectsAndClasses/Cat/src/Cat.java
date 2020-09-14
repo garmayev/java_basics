@@ -72,8 +72,17 @@ public class Cat
 
     public void feed(Double amount)
     {
-        weight = weight + amount;
-        eat += amount;
+        if ( isWeightNormal() ) {
+            weight = weight + amount;
+            eat += amount;
+        } else {
+            System.out.println("Cat can not eating");
+            count--;
+        }
+    }
+
+    public boolean isWeightNormal() {
+        return (weight > MIN_WEIGHT && weight < MAX_WEIGHT);
     }
 
     public static int getCount()
@@ -83,7 +92,12 @@ public class Cat
 
     public void drink(Double amount)
     {
-        weight = weight + amount;
+        if ( isWeightNormal() ) {
+            weight = weight + amount;
+        } else {
+            System.out.println("Cat can not drink");
+            count--;
+        }
     }
 
     public String getStatus()

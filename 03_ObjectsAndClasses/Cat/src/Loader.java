@@ -5,6 +5,7 @@ public class Loader
     {
         Cat catVasya = new Cat("Васька");
         System.out.println(catVasya);
+        while (catVasya.getStatus() != "Exploded") { catVasya.feed(300.); }
         Cat catAlisa = Cat.deepClone(catVasya);
         catAlisa.setWeight(3200);
         catAlisa.setName("Алиса");
