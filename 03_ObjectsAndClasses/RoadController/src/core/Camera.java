@@ -12,15 +12,15 @@ public class Camera {
         // Локальная переменная: создание экзепляра авто
         Car car = new Car();
         // Задание номера для авто
-        car.number = randomNumber;
+        car.setNumber(randomNumber);
         // Задание высоты для авто
-        car.height = randomHeight;
+        car.setHeight(randomHeight);
         // Задание веса для авто
-        car.weight = randomWeight;
+        car.setWeight(randomWeight);
         //
-        car.hasVehicle = Math.random() > 0.5;
+        car.setVehicle(Math.random() > 0.5);
         // Определение спецтранспорта
-        car.isSpecial = Math.random() < 0.15;
+        car.setSpecial(Math.random() < 0.15);
 
         return car;
     }
