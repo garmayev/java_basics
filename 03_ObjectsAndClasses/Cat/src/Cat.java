@@ -70,14 +70,26 @@ public class Cat
         System.out.println("Meow");
     }
 
+    public boolean isAlive()
+    {
+        String status = getStatus();
+        if ( status != "Dead" && status != "Exploded" )
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void feed(Double amount)
     {
-        if ( isWeightNormal() ) {
+        if ( isWeightNormal()) {
             weight = weight + amount;
             eat += amount;
+            if (!isAlive()) {
+                count--;
+            }
         } else {
             System.out.println("Cat can not eating");
-            count--;
         }
     }
 
