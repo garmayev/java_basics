@@ -14,7 +14,10 @@ public class Main
     {
         int result = 0;
         String num = number.toString();
-        for (int i = 0; i < num.length(); i++) result += Integer.parseInt (String.valueOf(num.charAt(i)));
+        for (int i = 0; i < num.length(); i++) {
+            char ch = num.charAt(i);
+            result += Character.hashCode(ch) - 48;
+        }
         return result;
     }
 }
