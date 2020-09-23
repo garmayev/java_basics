@@ -14,7 +14,7 @@ public class Main
     {
         int result = 0;
         String num = number.toString();
-        for (int i = 0; i < num.length(); i++) result += Integer.parseInt (String.valueOf(num.charAt(i) - 48));
+        for (int i = 0; i < num.length(); i++) result += Integer.parseInt (String.valueOf(num.charAt(i)));
         return result;
     }
 }
