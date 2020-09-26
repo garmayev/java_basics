@@ -60,7 +60,7 @@ public class Main {
 
     public static void minMaxDouble() {
         System.out.println("Минимальное значение типа Double");
-        System.out.println("-" + Double.MAX_VALUE);
+        System.out.println(Double.MAX_VALUE * (-1));
         System.out.println("Максимальное значение типа Double");
         System.out.println(Double.MAX_VALUE);
         System.out.println("=================================================");
