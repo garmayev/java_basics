@@ -1,34 +1,28 @@
 package ru.garmayev;
 
+import ru.garmayev.aid.Aid;
 import java.util.Scanner;
 
+/*
+ * Проект "Гуманитарная помощь". Домашнее Задание #4.3 (со звездочкой)
+ * Вывел все в отдельный класс для удобства, думал обернуть весь код в
+ * блок try-catch, но едиственная(? на мой взгляд) возможная ошибка  -
+ * это неверный формат входных  данных,  который  вполне  регулируется
+ * методом nextInt()
+ *
+ */
 public class Main {
 
+    public int box;
+
     public static void main(String[] args) {
+        /*
+         * Согласен, предыдущий код был более громоздким и неудобочитаемым. Исправил
+         */
+        System.out.print("Введите количество ящиков: ");
         Scanner scanner = new Scanner(System.in);
-//        int box = scanner.nextInt();
-        int boxCount = 1;
-//        int box = 29;
-        int box = 329;
-
-        int container = (int)Math.ceil((double)box / 27);
-        int car = (int)Math.ceil((double)box / (27 * 12));
-
-        for (int i = 1; i <= car; i++) {
-            System.out.println("Грузовик " + i);
-            for (int j = (i - 1) * 12 + 1; j <= i * 12; j++) {
-                if ( j <= container ) {
-                    System.out.println("\tКонтейнер " + j);
-
-                    for ( int k = (j - 1) * 27 + 1; k <= j * 27 && k <= box; k++ ){
-                        System.out.println("\t\tЯщик " + k);
-//                        k++;
-                    }
-                }
-            }
-        }
-        System.out.println("Необходимо: ");
-        System.out.println("\tГрузовиков - " + car);
-        System.out.println("\tКонтейнеров - " + container);
+        int box = scanner.nextInt();
+        Aid aid = new Aid(box);
+        System.out.println(aid.toString());
     }
 }
