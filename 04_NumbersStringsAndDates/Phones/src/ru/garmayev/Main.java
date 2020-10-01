@@ -9,25 +9,23 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String phone = scanner.nextLine();
-
-        StringBuilder sentence = new StringBuilder(phone.replaceAll("[^0-9]", ""));
-        try {
-            if ( sentence.length() == 11 ) {
-                if (sentence.charAt(0) == '8') {
-                    sentence.setCharAt(0, '7');
-                } else {
-                    throw new Exception("Неверный формат номера");
-                }
-            } else if (sentence.length() == 10){
-                sentence.insert(0, '7');
+//        Scanner scanner = new Scanner(System.in);
+//        String phone = scanner.nextLine();
+        String[] phones = new String[] {"+7 909 123-45-67", "+7 (909) 1234567", "8-905-1234567", "9-453-1234567", "8-905-123", "905-1234567", "8-905-12345672342"};
+        for (String phone : phones) {
+            String phoneClean = phone.replaceAll("[\\D]", "");
+//            System.out.println(phoneClean);
+//        StringBuilder sentence = new StringBuilder(phone.replaceAll("[^0-9]", ""));
+            if ( phoneClean.matches("^([78]\\d{10})") )
+            {
+                phoneClean = phoneClean.replaceFirst("^8{1}", "7");
+                System.out.println(phoneClean);
+            } else if ( phoneClean.matches(("^([9]\\d{9})")) ) {
+                phoneClean = "7" + phoneClean;
+                System.out.println(phoneClean);
             } else {
-                throw new Exception("Неверный формат номера");
+                System.err.println("Неверный формат номера: " + phoneClean);
             }
-            System.out.println(sentence);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
         }
     }
 }
