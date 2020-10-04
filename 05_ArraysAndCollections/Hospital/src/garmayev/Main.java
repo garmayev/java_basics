@@ -1,5 +1,6 @@
 package garmayev;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class Main {
@@ -11,8 +12,14 @@ public class Main {
      *   MAX_TEMPERATURE - максимальная температура, при которой пациент считается здоровым
      */
     public static final int PATIENT_COUNT = 30;
-    public static final float MIN_TEMPERATURE = (float) 36.6;
-    public static final float MAX_TEMPERATURE = (float) 36.9;
+    public static final float MIN_TEMPERATURE = 36.6f;
+    public static final float MAX_TEMPERATURE = 36.9f;
+
+    public static final float MIN_AVAILABLE_TEMPERATURE = 32f;
+    public static final float MAX_AVAILABLE_TEMPERATURE = 40f;
+    public static final String PATTERN = "#0.00°C";
+
+    public static DecimalFormat formatter;
 
     /**
      * Вывод температур всех пациентов в строку
@@ -20,14 +27,14 @@ public class Main {
      * @param array
      * @return
      */
-    public static String print(float[] array)
+    public static String arrayToString(double[] array)
     {
-        String result = "";
-        for (float item: array)
+        StringBuilder result = new StringBuilder();
+        for (double item: array)
         {
-            result += item + " ";
+            result.append(formatter.format(item)).append(" ");
         }
-        return result;
+        return result.toString();
     }
 
     /**
@@ -35,12 +42,12 @@ public class Main {
      *
      * @return
      */
-    public static float[] fill ()
+    public static double[] generateTemperatures ()
     {
-        float[] array = new float[PATIENT_COUNT];
+        double[] array = new double[PATIENT_COUNT];
         for (int i = 0; i < PATIENT_COUNT; i++) {
             // Генерация случайного числа  (32 < x < 40) и приведение его к виду xx.x
-            array[i] = (float)((int)(320 + (float) Math.random() * 60)) / 10;
+            array[i] = (float)MIN_AVAILABLE_TEMPERATURE + Math.random() * (MAX_AVAILABLE_TEMPERATURE - MIN_AVAILABLE_TEMPERATURE);
         }
         return array;
     }
@@ -51,10 +58,10 @@ public class Main {
      * @param array
      * @return
      */
-    public static float middle(float[] array)
+    public static float getAverageFromHospital(double[] array)
     {
         float sum = (float)0;
-        for (float item: array) sum += item;
+        for (double item: array) sum += item;
         return sum / PATIENT_COUNT;
     }
 
@@ -64,10 +71,10 @@ public class Main {
      * @param array
      * @return
      */
-    public static int good(float[] array)
+    public static int getCountHealthyPatient(double[] array)
     {
         int count = 0;
-        for (float item : array) {
+        for (double item : array) {
             if (item > MIN_TEMPERATURE && item < MAX_TEMPERATURE) {
                 count++;
             }
@@ -76,9 +83,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        float[] temperatures = fill();
-        System.out.println("Температуры пациентов: " + print(temperatures));
-        System.out.println("Средняя температура по больнице: " + middle(temperatures));
-        System.out.println("Количество здоровых пациентов: " + good(temperatures));
+        formatter = new DecimalFormat(PATTERN);
+        double[] temperatures = generateTemperatures();
+        System.out.println("Температуры пациентов: " + arrayToString(temperatures));
+        System.out.println("Средняя температура по больнице: " + formatter.format(getAverageFromHospital(temperatures)));
+        System.out.println("Количество здоровых пациентов: " + getCountHealthyPatient(temperatures));
     }
 }
