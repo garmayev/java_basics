@@ -12,9 +12,6 @@ public class Main {
     private static int index;
     private static String arg;
 
-    public Main() {
-    }
-
     private static boolean isInteger(String string) {
         try {
             int digit = Integer.parseInt(string);
